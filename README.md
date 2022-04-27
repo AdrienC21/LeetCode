@@ -5,4 +5,4 @@ There are several folders, each corresponding to a question. In the markdown fil
 
 # Acknowledgment
 
-This repository is automatically updated using the chrome web extension [LeetHub](https://github.com/QasimWani/LeetHub)
+Updates to the repository are automatically performed through the Chrome web extension [LeetHub](https://github.com/QasimWani/LeetHub).
