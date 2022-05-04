@@ -1,5 +1,7 @@
 from collections import defaultdict
 class Solution:
+    # O(n) time, O(n) space
+    # otherwise we can sort, have two pointers, O(nlog(n)) time, O(1) space
     def maxOperations(self, nums: List[int], k: int) -> int:
         d = defaultdict(list)
         for c in nums:
