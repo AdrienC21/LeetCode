@@ -1,4 +1,11 @@
+from math import sqrt
 class Solution:
+    # implicit formula
+    def fib(self, n: int) -> int:
+        phi = (1 + sqrt(5)) / 2
+        return round(pow(phi, n) / sqrt(5))
+    """
+    # dynamic programming and recursion
     def fib(self, n: int) -> int:
         if n <= 1:
             return n
@@ -12,3 +19,4 @@ class Solution:
             dp[k] = res
             return res
         return recFibo(n)
+    """
