@@ -1,4 +1,3 @@
-from functools import cmp_to_key
 class Solution:
     # Binary search
     def binarySearch(self, stack: List[int], k: int, l: int, elt: int) -> int:
@@ -17,6 +16,7 @@ class Solution:
     def maxEnvelopes(self, envelopes: List[List[int]]) -> int:
         """
         # old way with cmp
+        from functools import cmp_to_key
         def doll_compare(x: List[int], y: List[int]) -> int:
             if x[0] == y[0]:
                 return y[1] - x[1]
