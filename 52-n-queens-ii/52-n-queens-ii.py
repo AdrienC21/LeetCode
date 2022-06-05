@@ -1,14 +1,14 @@
 class Solution:
     def totalNQueens(self, n: int) -> int:
         res = 0
-        board = [["." for _ in range(n)] for _ in range(n)]
+        # board = [["." for _ in range(n)] for _ in range(n)]
 
         rows = set()
         diagUp = set()
         diagDown = set()
 
         def recSearch(j: int) -> None:
-            nonlocal res, board
+            nonlocal res
             if j == n:
                 res += 1
                 return
@@ -18,11 +18,11 @@ class Solution:
                     rows.add(i)
                     diagUp.add(i + j)
                     diagDown.add(i - j)
-                    board[i][j] = "Q"
+                    # board[i][j] = "Q"
                     recSearch(j + 1)
                     rows.discard(i)
                     diagUp.discard(i + j)
                     diagDown.discard(i - j)
-                    board[i][j] = "."  # remove queen after
+                    # board[i][j] = "."  # remove queen after
         recSearch(0)
         return res
