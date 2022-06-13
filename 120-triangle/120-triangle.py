@@ -1,4 +1,13 @@
 class Solution:
+    # better solution with O(n) space
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        dp = row[-1][:]
+        for row in triangle[::-1][1:]:  # enumerate bottom to top the rows
+            for i, num in enumerate(row):
+                dp[i] = num + min(dp[i], dp[i+1])
+        return dp[0]
+        
+    # Dynamic programming, but O(n^2) space complexity
     def minimumTotal(self, triangle: List[List[int]]) -> int:
         n = len(triangle)
         dp = [[None for _ in range(i)] for i in range(1, n+1)]
