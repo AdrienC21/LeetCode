@@ -1,5 +1,12 @@
-from collections import deque
+
+from functools import reduce
 class Solution:
+    def minPartitions(self, n: str) -> int:
+        return reduce(max, map(int, list(n)))
+    
+    # Solution with a deque. Remove maximum amount of digits (deci-binary with as many 1s as possible) and remove trailing zeros potentialy created
+    """
+from collections import deque
     def minPartitions(self, n: str) -> int:
         d = deque()
         for c in n:
@@ -15,3 +22,4 @@ class Solution:
                 d.popleft()
             steps += 1
         return steps
+    """
