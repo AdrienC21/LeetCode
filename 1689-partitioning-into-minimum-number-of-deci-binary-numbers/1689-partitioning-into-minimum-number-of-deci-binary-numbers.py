@@ -1,8 +1,13 @@
-
-from functools import reduce
 class Solution:
+    # even faster, using max directly ...
+    def minPartitions(self, n: str) -> int:
+        return max(n)
+    # reduce and map
+    """
+from functools import reduce
     def minPartitions(self, n: str) -> int:
         return reduce(max, map(int, list(n)))
+    """
     
     # Solution with a deque. Remove maximum amount of digits (deci-binary with as many 1s as possible) and remove trailing zeros potentialy created
     """
