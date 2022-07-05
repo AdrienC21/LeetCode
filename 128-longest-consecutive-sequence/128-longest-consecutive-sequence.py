@@ -15,8 +15,8 @@ class Solution:
                     sequence += 1
                 longest_sequence = max(longest_sequence, sequence)
         return longest_sequence
-                
-    # solution, but not optimal because min takes too much time
+
+    # solution, but not optimal theoretically because min takes too much time
     """
     def longestConsecutive(self, nums: List[int]) -> int:
         seen = set()
