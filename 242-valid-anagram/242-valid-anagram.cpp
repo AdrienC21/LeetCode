@@ -1,5 +1,25 @@
 class Solution {
 public:
+    // another approach, take into account the fact that there is only 26 letters
+    bool isAnagram(string s, string t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+        int n = s.length();
+        int counts[26] = {0};
+        for (int i = 0; i < n; i++) {
+            counts[s[i] - 'a']++;
+            counts[t[i] - 'a']--;
+        }
+        for (int i = 0; i < 26; i++) {
+            if (counts[i] != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    // works, but slower!
+    /*
     bool isAnagram(string s, string t) {
         map<char, int> h1;
         map<char, int> h2;
@@ -32,4 +52,5 @@ public:
         }
         return true;
     }
+    */
 };
