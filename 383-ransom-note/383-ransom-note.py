@@ -1,3 +1,19 @@
+class Solution:
+    # version with array instead of dict
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        freq1 = 26 * [0]
+        freq2 = 26 * [0]
+        orda = ord("a")
+        for c in ransomNote:
+            freq1[ord(c) - orda] += 1
+        for c in magazine:
+            freq2[ord(c) - orda] += 1
+        for i in range(26):
+            if freq1[i] > freq2[i]:
+                return False
+        return True
+
+"""
 from collections import defaultdict
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
@@ -13,3 +29,5 @@ class Solution:
             if freq1[c] > freq2[c]:  # not enough c letters in magazine
                 return False
         return True
+
+"""
