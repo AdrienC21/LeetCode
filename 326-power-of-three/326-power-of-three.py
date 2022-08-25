@@ -5,7 +5,7 @@ class Solution:
         if n == 1:
             return True
         if n < 1:
-            return self.isPowerOfThree(n / 3)
+            return self.isPowerOfThree(1 / n)
         a = n / 3
         if int(a) != a:
             return False
