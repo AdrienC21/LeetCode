@@ -9,10 +9,6 @@ class Solution:
             t2 = tuple(list(matrix[i+k][-1-k] for i in range(n-2*k)))
             t3 = tuple(list(matrix[-1-k][-(i+1+k)] for i in range(n-2*k)))
             t4 = tuple(list(matrix[-(i+1+k)][k] for i in range(n-2*k)))
-            print(t1)
-            print(t2)
-            print(t3)
-            print(t4)
             for i in range(n-2*k):
                 matrix[k][i+k] = t4[i]
                 matrix[i+k][-1-k] = t1[i]
