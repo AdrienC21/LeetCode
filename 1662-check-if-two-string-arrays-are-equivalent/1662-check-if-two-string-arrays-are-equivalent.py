@@ -1,5 +1,10 @@
 class Solution:
     def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
+        if reduce(lambda x, y: x + y, map(lambda x: len(x), word1)) != reduce(lambda x, y: x + y, map(lambda x: len(x), word2)):
+            return False
+        return "".join(word1) == "".join(word2)
+    """
+    def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
         n1 = len(word1)
         n2 = len(word2)
         i = 0
@@ -24,3 +29,4 @@ class Solution:
                 if j < n2:
                     lenj = len(word2[j])
         return (i == n1) and (j == n2)
+    """
