@@ -1,21 +1,21 @@
 class Solution:
-    def solve(self,routes,hasApple,idx,parent):
-        cost=0
-        for child in routes[idx]:
-            if(child!=parent):
-                cost+=self.solve(routes,hasApple,child,idx)
+    def solve(self, routes: dict, hasApple: List[bool], i: int, parent: int) -> int:
+        cost = 0
+        for child in routes[i]:
+            if child != parent:
+                cost += self.solve(routes, hasApple, child, i)
         
-        if(idx!=0 and hasApple[idx]):
-            hasApple[parent]=True
-            return cost+2
+        if (i != 0) and hasApple[i]:
+            hasApple[parent] = True
+            return cost + 2
         return cost
-        
+
     def minTime(self, n: int, edges: List[List[int]], hasApple: List[bool]) -> int:
-        routes=collections.defaultdict(list)
-        res=0
-        for k,v in edges:
+        routes = defaultdict(list)
+        res = 0
+        for k, v in edges:
             routes[k].append(v)
             routes[v].append(k)
             
-        res=self.solve(routes,hasApple,0,0)
+        res = self.solve(routes, hasApple, 0, 0)
         return res
