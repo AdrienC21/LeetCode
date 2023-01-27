@@ -1,7 +1,7 @@
 class Solution:
     # set for speed up
     # dict to cache previous results
-    
+    # O(n*l^2)? where n len(words) and l max len of a word?
     def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
         allwords = set(words)
         calculated = {}
