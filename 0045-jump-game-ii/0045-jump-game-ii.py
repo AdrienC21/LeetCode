@@ -9,9 +9,8 @@ class Solution:
             if dp[i] == -1:  # never calculated
                 maxJump = nums[i]
                 res = n + 1
-                for j in range(1, maxJump+1):
-                    if (i + j) < n:
-                        res = min(res, 1 + recSearch(i+j))
+                for j in range(min(maxJump, n-1-i), 0, -1):
+                    res = min(res, 1 + recSearch(i+j))
                 dp[i] = res
             return dp[i]
 
