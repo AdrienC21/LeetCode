@@ -6,10 +6,8 @@ impl Solution {
         if (dp[i] == -1) {  // never calculated
             let maxJump: i32 = nums[i];
             let mut res: i32 = *n + 1;
-            for j in 1..(maxJump+1) as usize {
-                if ((i + j) < (*n as usize)) {
-                    res = cmp::min(res, 1 + Solution::recSearch(i+j, nums, n, dp));
-                }
+            for j in (1..(cmp::min(maxJump+1, *n-(i as i32)))).rev() {
+                res = cmp::min(res, 1 + Solution::recSearch(i+(j as usize), nums, n, dp));
             }
             dp[i] = res;
         }
