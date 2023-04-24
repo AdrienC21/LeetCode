@@ -19,3 +19,17 @@ class Solution:
             return stones[0]
         else:
             return 0
+    # Other solution with heap
+    """
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        s = [-stone for stone in stones]
+        heapq.heapify(s)
+        while len(s) >= 2:
+            p2 = -heapq.heappop(s)
+            p1 = -heapq.heappop(s)
+            if p2 != p1:
+                heapq.heappush(s, -(p2 - p1))
+        if s:
+            return -s[0]
+        return 0
+    """
