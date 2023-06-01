@@ -1,17 +1,19 @@
-from collections import defaultdict
 import sys
 import heapq
+from collections import defaultdict
+
+
 class Solution:
-    def getNeighbors(self, i: int, j: int, n: int, grid: List[List[int]]):
+    def getNeighbors(self, i: int, j: int, n: int, grid: List[Tuple[int, int]]):
         res = []
         for k in (-1, 0, 1):
             for l in (-1, 0, 1):
                 if not((k == 0) and (l == 0)) and (0 <= (i+k) < n) and (0 <= (j+l) < n) and (grid[i+k][j+l] == 0):
-                    res.append((1, (i+k, j+l)))
+                    res.append((i+k, j+l))
         return res
-        
+
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
-        if grid[0][0] != 0:
+        if grid[0][0]:
             return -1
         # build a graph
         n = len(grid)
@@ -23,8 +25,8 @@ class Solution:
             if (i, j) in visited:
                 continue
             visited.add((i, j))
-            for d, (k, l) in self.getNeighbors(i, j, n, grid):
-                graph[(i, j)].append((d, (k, l)))
+            for (k, l) in self.getNeighbors(i, j, n, grid):
+                graph[(i, j)].append((k, l))
                 if (k, l) not in visited:
                     to_visit.append((k, l))
         
@@ -41,8 +43,8 @@ class Solution:
             if (i, j) in visited:
                 continue
             visited.add((i, j))
-            for d, (k, l) in graph[(i, j)]:
-                if ((k, l) not in visited) and (distances[(k, l)] > distances[(i, j)] + d):
-                    distances[(k, l)] = distances[(i, j)] + d
+            for (k, l) in graph[(i, j)]:
+                if ((k, l) not in visited) and (distances[(k, l)] > distances[(i, j)] + 1):
+                    distances[(k, l)] = distances[(i, j)] + 1
                     heapq.heappush(to_visit, (distances[(k, l)], (k, l)))
         return distances[(0, 0)] + 1  # length of a clear path is the number of visited cells of this path.
